@@ -2,55 +2,49 @@ const express = require('express');
 const router = express.Router();
 
 // model
-const Commssion = require('../models/commission.js');
-const emote_seed = require('../models/emote_seed.js');
+const Commssions = require('../models/commission.js');
+const emote_seed = require('../models/seed.js');
+const Commissions = require('../models/commission.js');
 
 router.get('/', (req, res) => {
-    Cocktails.find({}, (err, foundCocktails) => {
-        res.json(foundCocktails)
+    Commissions.find({}, (err, foundCommissions) => {
+        res.json(foundCommissions)
     })
 })
 
-// router.get('/communitySearch', (req, res) => {
-//     Cocktails.find({}, (err, foundCommunityCocktails) => {
-//         res.json(foundCommunityCocktails);
-//     })
-// })
-
 router.get('/:id', (req, res) => {
-    Cocktails.findById(req.params.id, (err, foundCocktail) => {
-        res.json(foundCocktail);
+    Commissions.findById(req.params.id, (err, foundCommission) => {
+        res.json(foundCommission);
     })
 })
 
 router.post('/', (req, res) => {
-    Cocktails.create(req.body, (err, createdCocktail) => {
-        //req.body.strDrinkThumb ==='' ? req.body.strDrinkThumb = 'https://clipartart.com/images/clipart-martini-4.jpg' : req.body.strDrinkThumb = req.body.strDrinkThumb
-        res.json(createdCocktail);
+    Commissions.create(req.body, (err, createdCommission) => {
+        res.json(createdCommission);
     })
 })
 
 router.delete('/:id', (req, res) => {
-    Cocktails.findByIdAndDelete(req.params.id, (err, deletedCocktail) => {
-        res.json(deletedCocktail);
+    Commissions.findByIdAndDelete(req.params.id, (err, deletedCommission) => {
+        res.json(deletedCommission);
     })
 })
 
-// Cocktails.create(Drink_Seed, (err, data) => {
+// Commissions.create(Drink_Seed, (err, data) => {
 //   if (err) console.log(err.message)
 //   console.log('added provided drink data')
 // })
 
-Cocktails.countDocuments({}, (err, data) => {
+Commissions.countDocuments({}, (err, data) => {
     if (err) console.log(err.message)
-    console.log(`There are ${data} drinks in this database`)
+    console.log(`There are ${data} commissions in this database`)
   })
 
-router.put('/:id', (req, res) => {
-    Cocktails.findByIdAndUpdate(req.params.id, req.body, (err, updatedCocktail) => {
-        res.json(updatedCocktail);
-    })
-})
+// router.put('/:id', (req, res) => {
+//     Commissions.findByIdAndUpdate(req.params.id, req.body, (err, updatedCommission) => {
+//         res.json(updatedCommission);
+//     })
+// })
 
 
 module.exports = router;
