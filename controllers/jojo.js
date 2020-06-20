@@ -30,9 +30,9 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-// Commissions.create(Drink_Seed, (err, data) => {
+// Commissions.create(emote_seed, (err, data) => {
 //   if (err) console.log(err.message)
-//   console.log('added provided drink data')
+//   console.log('added provided data')
 // })
 
 Commissions.countDocuments({}, (err, data) => {

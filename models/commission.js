@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const modelSchema = new mongoose.Schema({
     name: String,
-    img: String,
+    imgPath: String,
     commissionType: String
 })
 
