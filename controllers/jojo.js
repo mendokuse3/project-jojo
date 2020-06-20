@@ -5,10 +5,18 @@ const router = express.Router();
 const Commssions = require('../models/commission.js');
 const emote_seed = require('../models/seed.js');
 const Commissions = require('../models/commission.js');
+const { on } = require('../models/commission.js');
 
 router.get('/', (req, res) => {
     Commissions.find({}, (err, foundCommissions) => {
         res.json(foundCommissions)
+    })
+})
+
+router.get('/seed', (req, res) => {
+    Commissions.create(emote_seed, (err, data) => {
+        if (err) console.log(err.message)
+        console.log('added provided data')
     })
 })
 
